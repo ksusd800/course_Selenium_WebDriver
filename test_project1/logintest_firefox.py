@@ -6,9 +6,12 @@ from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.fixture
 def driver(request):
-    wd_ff = webdriver.Firefox()
-    request.addfinalizer(wd_ff.quit)
-    return wd_ff
+    wd_ff1 = webdriver.Firefox()
+   # старая версия:
+   # wd_ff = webdriver.Firefox(capabilities={"marionette": False})
+    wd_ff1 = webdriver.Firefox(firefox_binary="c:\\Program Files\\Firefox Nightly\\firefox.exe")
+    request.addfinalizer(wd_ff1.quit)
+    return wd_ff1
 
 
 def test_example(driver):
